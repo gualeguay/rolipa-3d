@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ROLIPA 3D: diseño e impresión 3D de objetos personalizados, piezas funcionales y pequeñas series.">
+  <title>ROLIPA 3D | Impresión 3D a pedido</title>
+  <link rel="icon" href="rolipa-logo.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<main>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="ROLIPA 3D, inicio">
+      <img class="brand-logo" src="rolipa-logo.png" alt="">
+      <span>ROLIPA <b>3D</b></span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="header-cta" href="#contacto">Cotizar pieza <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span> ROLIPA 3D · Impresión a pedido</p>
+      <h1>De una idea<br><em>a algo real.</em></h1>
+      <p class="hero-intro">Diseñamos y fabricamos objetos personalizados, piezas funcionales y pequeñas series con terminaciones que se sienten profesionales.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#catalogo">Explorar piezas <span aria-hidden="true">↓</span></a>
+        <a class="text-link" href="#contacto">Tengo una idea <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="hero-visual brand-visual" aria-label="Identidad visual de ROLIPA 3D">
+      <div class="brand-wave" aria-hidden="true"></div>
+      <div class="logo-frame"><img src="rolipa-social.png" alt="Logo de ROLIPA 3D con carnero navegante"></div>
+      <div class="dimension dimension-top">NAVEGA HACIA TUS SUEÑOS</div>
+      <div class="dimension dimension-side">DISEÑO · IMPRESIÓN · CREACIÓN</div>
+      <div class="material-tag"><strong>ROLIPA</strong><span>ideas que toman forma</span></div>
+      <div class="hero-stamp">HECHO<br>CAPA A<br>CAPA</div>
+    </div>
+
+    <div class="hero-proof" aria-label="Características del servicio">
+      <span>01</span><p>Diseño personalizado</p>
+      <span>02</span><p>Materiales seleccionados</p>
+      <span>03</span><p>Producción local</p>
+    </div>
+  </section>
+
+  <section class="catalog section" id="catalogo">
+    <div class="section-heading">
+      <div><p class="kicker">Catálogo inicial / 01</p><h2>Piezas que abren posibilidades.</h2></div>
+      <p>Ejemplos para inspirarte. Cada producto puede adaptarse en tamaño, color, material y nivel de terminación.</p>
+    </div>
+    <div class="filters" aria-label="Filtrar catálogo">
+      <button class="active" data-filter="Todos" type="button">Todos</button>
+      <button data-filter="Deco" type="button">Deco</button>
+      <button data-filter="Hogar" type="button">Hogar</button>
+      <button data-filter="Personalizado" type="button">Personalizado</button>
+      <button data-filter="Funcional" type="button">Funcional</button>
+    </div>
+    <div class="product-grid">
+      <article class="product-card" data-category="Deco">
+        <div class="product-visual lime"><span class="product-number">01</span><div class="object object-vase" aria-hidden="true"><i></i><i></i><i></i></div><span class="material">PLA</span></div>
+        <div class="product-info"><div><p>Deco</p><h3>Maceta Voronoi</h3><span>Diseño liviano, textura orgánica y colores a elección.</span></div><button type="button" data-product="Maceta Voronoi" aria-label="Consultar por Maceta Voronoi">↗</button></div>
+      </article>
+      <article class="product-card" data-category="Hogar">
+        <div class="product-visual orange"><span class="product-number">02</span><div class="object object-organizer" aria-hidden="true"><i></i><i></i><i></i></div><span class="material">PETG</span></div>
+        <div class="product-info"><div><p>Hogar</p><h3>Organizador modular</h3><span>Módulos combinables para escritorio, taller o cocina.</span></div><button type="button" data-product="Organizador modular" aria-label="Consultar por Organizador modular">↗</button></div>
+      </article>
+      <article class="product-card" data-category="Personalizado">
+        <div class="product-visual blue"><span class="product-number">03</span><div class="object object-sign" aria-hidden="true"><i></i><i></i><i></i></div><span class="material">Multicolor</span></div>
+        <div class="product-info"><div><p>Personalizado</p><h3>Cartel personalizado</h3><span>Tu nombre, marca o frase en una pieza lista para exhibir.</span></div><button type="button" data-product="Cartel personalizado" aria-label="Consultar por Cartel personalizado">↗</button></div>
+      </article>
+      <article class="product-card" data-category="Funcional">
+        <div class="product-visual purple"><span class="product-number">04</span><div class="object object-stand" aria-hidden="true"><i></i><i></i><i></i></div><span class="material">PETG / ABS</span></div>
+        <div class="product-info"><div><p>Funcional</p><h3>Soporte a medida</h3><span>Una solución diseñada alrededor del objeto que necesitás.</span></div><button type="button" data-product="Soporte a medida" aria-label="Consultar por Soporte a medida">↗</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="process section" id="proceso">
+    <div class="process-intro">
+      <p class="kicker light">El proceso / 02</p>
+      <h2>Simple para vos.<br><em>Preciso para nosotros.</em></h2>
+      <p>Podés llegar con un archivo listo, una referencia o apenas una idea. Te ayudamos a convertirla en una pieza imprimible.</p>
+      <a href="#contacto">Empezar un proyecto <span>→</span></a>
+    </div>
+    <ol class="steps">
+      <li><span>01</span><div><h3>Contanos la idea</h3><p>Uso, medidas, cantidad y cualquier referencia que tengas.</p></div></li>
+      <li><span>02</span><div><h3>Definimos la solución</h3><p>Revisamos diseño, material, color, terminación y presupuesto.</p></div></li>
+      <li><span>03</span><div><h3>Imprimimos</h3><p>Preparamos el archivo y producimos la pieza capa por capa.</p></div></li>
+      <li><span>04</span><div><h3>Entregamos</h3><p>Controlamos el resultado y coordinamos retiro o envío.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="contact section" id="contacto">
+    <div class="contact-heading">
+      <p class="kicker">Contacto / 03</p>
+      <h2>¿Qué querés<br><em>hacer realidad?</em></h2>
+      <p>Contanos qué necesitás. Con algunos datos podemos orientarte sobre material, tiempos y forma de producción.</p>
+      <div class="contact-notes"><span><b>01</b> Una pieza única</span><span><b>02</b> Un diseño desde cero</span><span><b>03</b> Una pequeña serie</span></div>
+    </div>
+    <form class="contact-form">
+      <div class="field-row">
+        <label><span>Tu nombre</span><input name="nombre" placeholder="Nombre y apellido" required></label>
+        <label><span>Tu email</span><input name="email" type="email" placeholder="nombre@email.com" required></label>
+      </div>
+      <label><span>¿Qué necesitás?</span><select name="tipo" required><option value="" disabled selected>Elegí una opción</option><option>Imprimir un archivo que ya tengo</option><option>Diseñar una pieza desde cero</option><option>Personalizar un producto</option><option>Producir varias unidades</option><option>No estoy seguro todavía</option></select></label>
+      <label><span>Contanos tu idea</span><textarea id="mensaje" name="mensaje" rows="4" placeholder="Uso, medidas aproximadas, cantidad, color..." required></textarea></label>
+      <button class="button button-dark" type="submit">Enviar consulta <span aria-hidden="true">↗</span></button>
+      <p class="form-status" role="status">¡Consulta preparada! Conectá este formulario a tu correo o WhatsApp para recibirla.</p>
+    </form>
+  </section>
+
+  <footer>
+    <a class="brand footer-brand" href="#inicio"><img class="brand-logo" src="rolipa-logo.png" alt=""><span>ROLIPA <b>3D</b></span></a>
+    <p>Navega hacia tus sueños.</p>
+    <a href="#inicio">Volver arriba ↑</a>
+    <span>© 2026 ROLIPA 3D</span>
+  </footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,56 @@
+name: Build Jarvis Casa APK
+
+on:
+  push:
+    branches:
+      - jarvis-casa-apk-build
+    paths:
+      - "jarvis-build/**"
+      - ".github/workflows/build-jarvis-apk.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle 8.11.1
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.11.1"
+
+      - name: Reconstruct Android project
+        shell: bash
+        run: |
+          cat jarvis-build/chunk00.txt jarvis-build/chunk01.txt jarvis-build/chunk02.txt jarvis-build/chunk03.txt > /tmp/jarvis.zip.b64
+          base64 --decode /tmp/jarvis.zip.b64 > /tmp/jarvis.zip
+          mkdir -p /tmp/jarvis-src
+          unzip -q /tmp/jarvis.zip -d /tmp/jarvis-src
+          test -f /tmp/jarvis-src/JarvisCasa/settings.gradle
+
+      - name: Build debug APK
+        working-directory: /tmp/jarvis-src/JarvisCasa
+        run: gradle --no-daemon :app:assembleDebug
+
+      - name: Prepare artifact
+        shell: bash
+        run: |
+          mkdir -p apk-output
+          cp /tmp/jarvis-src/JarvisCasa/app/build/outputs/apk/debug/app-debug.apk apk-output/JarvisCasa-v1-debug.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: JarvisCasa-v1-debug-apk
+          path: apk-output/JarvisCasa-v1-debug.apk
+          if-no-files-found: error

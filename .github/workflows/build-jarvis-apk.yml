@@ -37,6 +37,7 @@ jobs:
           mkdir -p /tmp/jarvis-src
           unzip -q /tmp/jarvis.zip -d /tmp/jarvis-src
           test -f /tmp/jarvis-src/JarvisCasa/settings.gradle
+          printf "\nandroid.useAndroidX=true\nandroid.enableJetifier=true\n" >> /tmp/jarvis-src/JarvisCasa/gradle.properties
 
       - name: Build debug APK
         working-directory: /tmp/jarvis-src/JarvisCasa

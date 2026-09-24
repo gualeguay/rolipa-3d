@@ -9,8 +9,6 @@ import android.media.MediaRecorder;
 import android.os.Handler;
 import android.os.Looper;
 
-import androidx.core.content.ContextCompat;
-
 import ai.onnxruntime.OnnxTensor;
 import ai.onnxruntime.OrtEnvironment;
 import ai.onnxruntime.OrtSession;
@@ -232,7 +230,7 @@ public final class LocalWakeWordDetector {
     }
 
     private boolean initAudio() {
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO)
+        if (context.checkSelfPermission(Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
             status("ERROR: falta permiso de micrófono");
             return false;

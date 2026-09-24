@@ -39,6 +39,11 @@ jobs:
           test -f /tmp/jarvis-src/JarvisCasa/settings.gradle
           printf "\nandroid.useAndroidX=true\nandroid.enableJetifier=true\n" >> /tmp/jarvis-src/JarvisCasa/gradle.properties
 
+      - name: Apply Jarvis v1.1 voice fix
+        shell: bash
+        run: |
+          python3 jarvis-build/fix_v11.py /tmp/jarvis-src/JarvisCasa
+
       - name: Build debug APK
         working-directory: /tmp/jarvis-src/JarvisCasa
         run: gradle --no-daemon :app:assembleDebug
@@ -47,11 +52,11 @@ jobs:
         shell: bash
         run: |
           mkdir -p apk-output
-          cp /tmp/jarvis-src/JarvisCasa/app/build/outputs/apk/debug/app-debug.apk apk-output/JarvisCasa-v1-debug.apk
+          cp /tmp/jarvis-src/JarvisCasa/app/build/outputs/apk/debug/app-debug.apk apk-output/JarvisCasa-v1.1-debug.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: JarvisCasa-v1-debug-apk
+          name: JarvisCasa-v1.1-debug-apk
           path: apk-output/JarvisCasa-v1-debug.apk
           if-no-files-found: error

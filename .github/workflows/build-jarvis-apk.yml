@@ -58,5 +58,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: JarvisCasa-v1.1-debug-apk
-          path: apk-output/JarvisCasa-v1-debug.apk
+          path: apk-output/JarvisCasa-v1.1-debug.apk
           if-no-files-found: error

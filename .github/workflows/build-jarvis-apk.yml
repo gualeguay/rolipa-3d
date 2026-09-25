@@ -45,6 +45,12 @@ jobs:
           python3 jarvis-build/fix_v11.py /tmp/jarvis-src/JarvisCasa
           python3 jarvis-build/fix_v12.py /tmp/jarvis-src/JarvisCasa
           python3 jarvis-build/fix_v13.py /tmp/jarvis-src/JarvisCasa
+          python3 jarvis-build/fix_v14a.py /tmp/jarvis-src/JarvisCasa
+          python3 jarvis-build/fix_v14b.py /tmp/jarvis-src/JarvisCasa
+          python3 jarvis-build/fix_v14c.py /tmp/jarvis-src/JarvisCasa
+          python3 jarvis-build/fix_v14d.py /tmp/jarvis-src/JarvisCasa
+          python3 jarvis-build/fix_v14e.py /tmp/jarvis-src/JarvisCasa
+          python3 jarvis-build/fix_v14f.py /tmp/jarvis-src/JarvisCasa
 
       - name: Build debug APK
         working-directory: /tmp/jarvis-src/JarvisCasa
@@ -54,11 +60,11 @@ jobs:
         shell: bash
         run: |
           mkdir -p apk-output
-          cp /tmp/jarvis-src/JarvisCasa/app/build/outputs/apk/debug/app-debug.apk apk-output/JarvisCasa-v1.3-debug.apk
+          cp /tmp/jarvis-src/JarvisCasa/app/build/outputs/apk/debug/app-debug.apk apk-output/JarvisCasa-v1.4-debug.apk
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: JarvisCasa-v1.3-debug-apk
-          path: apk-output/JarvisCasa-v1.3-debug.apk
+          name: JarvisCasa-v1.4-debug-apk
+          path: apk-output/JarvisCasa-v1.4-debug.apk
           if-no-files-found: error

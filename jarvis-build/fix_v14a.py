@@ -6,7 +6,7 @@ p=root/"app/src/main/java/com/rolipa/jarviscasa/SettingsStore.java"
 s=p.read_text(encoding="utf-8")
 s=s.replace('''    public String getAliases() { return prefs.getString("aliases", "luz de la pieza,luz del dormitorio,luz"); }
 ''','''    public String getAliases() { return prefs.getString("aliases", "luz de la pieza,luz del dormitorio,luz"); }
-    public String getHeaterDeviceId() { return prefs.getString("heater_device_id", ""); }
+    public String getHeaterDeviceId() { return prefs.getString("heater_device_id", "ebd96177c559bd1253aidy"); }
     public String getHeaterSwitchCode() { return prefs.getString("heater_switch_code", "switch_1"); }
     public String getHeaterAliases() { return prefs.getString("heater_aliases", "termotanque,termotanque electrico,agua caliente"); }
 ''')

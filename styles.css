@@ -387,3 +387,18 @@ body.gallery-is-open{overflow:hidden}
 @media(prefers-reduced-motion:reduce){.page-sea::before { animation:none!important; }}
 
 .catalog-count{display:inline-block;margin:0 0 20px;padding:8px 12px;border-radius:10px;background:#f7f1e5ed;font-size:12px;color:#061829}.product-card[hidden]{display:none!important}
+
+/* Nautical navigation: deep blue, warm brass and clear active states. */
+.site-header { background:linear-gradient(115deg,#082941f5,#0d4360f5);color:#f4e6c8;border-bottom:1px solid #d6b47666;box-shadow:0 6px 22px #03213926; }
+.site-header .brand b { color:#73d9ef; }.site-header .brand-logo{border-color:#d6b476}
+nav { gap:12px; }nav a { padding:11px 16px;border-radius:12px;color:#e3f3f4;border:1px solid #91dceb22;transition:background .2s,transform .2s,border-color .2s; }nav a::after{display:none}nav a:hover,nav a:focus-visible{background:#14729577;border-color:#7bcbd9;transform:translateY(-2px)}
+.header-cta { padding:12px 18px;border:1px solid #e6c78f;border-radius:12px;background:linear-gradient(130deg,#f0d39a,#c49a59);color:#082941;box-shadow:0 4px 12px #0002; }.header-cta:hover { background:#f4deb2; }
+.filters { display:flex;gap:10px;padding:14px;background:linear-gradient(120deg,#082c48ed,#0c5069ed);border:1px solid #84d6e344;border-radius:22px;box-shadow:0 12px 32px #04294330;width:fit-content;max-width:100%; }
+.filters button { display:flex;align-items:center;gap:9px;padding:12px 17px;border:1px solid #8cdae044;border-radius:14px;background:#ffffff0a;color:#e4f7f6;font:700 12px Arial;text-transform:none;letter-spacing:.015em;transition:transform .2s,background .2s,border-color .2s,box-shadow .2s; }
+.filters button .category-icon { display:grid;place-items:center;width:26px;height:26px;border-radius:9px;background:#88d4e51a;color:#92e3ee;font-size:20px;line-height:1; }
+.filters button:hover { background:#14799e88;color:white;border-color:#9ae6ef;transform:translateY(-3px);box-shadow:0 7px 16px #001c3044; }
+.filters button.active,.filters button[aria-pressed="true"] { background:linear-gradient(130deg,#f4dca7,#cfa663);color:#082941;border-color:#ffe6b4;box-shadow:0 4px 16px #d3ad6533; }
+.filters button.active .category-icon,.filters button[aria-pressed="true"] .category-icon { background:#08294113;color:#082941; }
+.catalog-count { background:#082c48e8;color:#bdeaf0;border:1px solid #a8e3ed33;border-radius:12px;padding:9px 14px; }
+@media(max-width:1000px) { nav { padding:10px 0 14px;gap:10px; }.site-header { padding-top:8px;padding-bottom:4px; } }
+@media(max-width:700px) { .filters { padding:10px;gap:8px;border-radius:18px; }.filters button{padding:10px 12px;font-size:11px;gap:7px}.filters button .category-icon{width:23px;height:23px;font-size:18px}nav a{padding:9px 11px;font-size:11px}.header-cta{padding:10px 12px;font-size:10px} }

@@ -164,3 +164,20 @@ if (gallery && galleryCards.length) {
     if (galleryOpener) galleryOpener.focus();
   });
 }
+
+// Keep the header aligned with the section the visitor is reading.
+if ("IntersectionObserver" in window) {
+  const sectionLinks = Array.from(document.querySelectorAll("nav a[href^='#']"));
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      sectionLinks.forEach((link) => {
+        const current = link.getAttribute("href") === `#${entry.target.id}`;
+        link.classList.toggle("nav-current", current);
+        if (current) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    });
+  }, {rootMargin:"-15% 0px -55% 0px",threshold:0});
+  document.querySelectorAll("#catalogo, #proceso, #contacto").forEach((section) => sectionObserver.observe(section));
+}

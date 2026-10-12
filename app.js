@@ -91,16 +91,43 @@ if (motionToggle && merryScene) {
 const gallery = document.querySelector(".piece-gallery");
 const galleryCards = Array.from(document.querySelectorAll(".real-product"));
 let galleryIndex = 0;
+let photoIndex = 0;
 let galleryOpener;
+let activePhotos = [];
+const showPhoto = (index) => {
+  photoIndex = (index + activePhotos.length) % activePhotos.length;
+  const title = galleryCards[galleryIndex].querySelector("h3").textContent;
+  const image = gallery.querySelector(".gallery-image");
+  image.src = activePhotos[photoIndex];
+  image.alt = `${title} · Vista ${photoIndex + 1}`;
+  gallery.querySelector(".gallery-counter").textContent = `Foto ${photoIndex + 1} de ${activePhotos.length}`;
+  gallery.querySelectorAll(".gallery-thumbnails button").forEach((button, i) => {
+    button.classList.toggle("selected", i === photoIndex);
+    button.setAttribute("aria-pressed", String(i === photoIndex));
+  });
+  gallery.querySelector(".gallery-prev").disabled = activePhotos.length < 2;
+  gallery.querySelector(".gallery-next").disabled = activePhotos.length < 2;
+};
 const showPiece = (index) => {
-  galleryIndex = (index + galleryCards.length) % galleryCards.length;
-  const card = galleryCards[galleryIndex];
-  const photo = card.querySelector(".real-product-photo img");
-  gallery.querySelector(".gallery-image").src = photo.src;
-  gallery.querySelector(".gallery-image").alt = photo.alt;
+  galleryIndex = index;
+  const card = galleryCards[index];
+  activePhotos = JSON.parse(card.dataset.photos);
   gallery.querySelector("#gallery-title").textContent = card.querySelector("h3").textContent;
-  gallery.querySelector(".gallery-counter").textContent = `Pieza ${galleryIndex + 1} de ${galleryCards.length}`;
   gallery.querySelector(".gallery-instagram").href = card.querySelector(".instagram-source").href;
+  const thumbnails = gallery.querySelector(".gallery-thumbnails");
+  thumbnails.replaceChildren();
+  activePhotos.forEach((src, i) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.setAttribute("aria-label", `Ver ángulo ${i + 1}`);
+    const image = document.createElement("img");
+    image.src = src;
+    image.alt = "";
+    button.append(image);
+    button.addEventListener("click", () => showPhoto(i));
+    thumbnails.append(button);
+  });
+  showPhoto(0);
 };
 if (gallery && galleryCards.length) {
   galleryCards.forEach((card, index) => {
@@ -110,20 +137,27 @@ if (gallery && galleryCards.length) {
         galleryOpener = opener;
         showPiece(index);
         gallery.showModal();
+        document.body.classList.add("gallery-is-open");
       });
     });
   });
   gallery.querySelector(".gallery-close").addEventListener("click", () => gallery.close());
-  gallery.querySelector(".gallery-prev").addEventListener("click", () => showPiece(galleryIndex - 1));
-  gallery.querySelector(".gallery-next").addEventListener("click", () => showPiece(galleryIndex + 1));
+  gallery.querySelector(".gallery-prev").addEventListener("click", () => showPhoto(photoIndex - 1));
+  gallery.querySelector(".gallery-next").addEventListener("click", () => showPhoto(photoIndex + 1));
   gallery.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowLeft") { event.preventDefault(); showPiece(galleryIndex - 1); }
-    if (event.key === "ArrowRight") { event.preventDefault(); showPiece(galleryIndex + 1); }
+    if (event.key === "ArrowLeft") { event.preventDefault(); showPhoto(photoIndex - 1); }
+    if (event.key === "ArrowRight") { event.preventDefault(); showPhoto(photoIndex + 1); }
   });
+  let touchStartX;
+  const photoArea = gallery.querySelector(".gallery-image-wrap");
+  photoArea.addEventListener("touchstart", (event) => { touchStartX = event.changedTouches[0].clientX; }, {passive:true});
+  photoArea.addEventListener("touchend", (event) => {
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(distance) > 50) showPhoto(photoIndex + (distance < 0 ? 1 : -1));
+  }, {passive:true});
   gallery.addEventListener("click", (event) => { if (event.target === gallery) gallery.close(); });
   gallery.addEventListener("close", () => {
     document.body.classList.remove("gallery-is-open");
     if (galleryOpener) galleryOpener.focus();
   });
-  gallery.addEventListener("toggle", () => document.body.classList.toggle("gallery-is-open", gallery.open));
 }

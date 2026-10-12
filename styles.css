@@ -373,3 +373,7 @@ main > * { pointer-events:auto; }
 .gallery-bottom{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-top:15px}.gallery-counter{font-size:12px}.gallery-instagram{font-size:12px;min-height:44px;padding:10px 15px}
 body.gallery-is-open{overflow:hidden}
 @media(max-width:700px){.piece-gallery{padding:14px}.gallery-toolbar h2{font-size:20px}.gallery-image{height:55vh}.gallery-instagram{width:100%;justify-content:center;font-size:11px}}
+
+.real-product-photo{position:relative}.photo-count{position:absolute;bottom:12px;right:12px;background:#061829e8;color:#fff;border-radius:20px;padding:7px 11px;font-size:11px;font-weight:700}
+.gallery-thumbnails{display:flex;gap:9px;padding:12px 2px 3px;overflow-x:auto}.gallery-thumbnails button{flex:0 0 64px;width:64px;height:64px;padding:2px;background:#fff;border:2px solid transparent;border-radius:9px;cursor:pointer}.gallery-thumbnails button.selected{border-color:#168df0}.gallery-thumbnails img{width:100%;height:100%;object-fit:contain;border-radius:5px}.gallery-prev:disabled,.gallery-next:disabled{display:none}.gallery-image{height:min(53vh,590px)}
+@media(max-width:700px){.gallery-image{height:48vh}.gallery-thumbnails button{flex-basis:52px;width:52px;height:52px}}

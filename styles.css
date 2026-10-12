@@ -276,3 +276,50 @@ footer { padding-bottom:90px; }
 .merry-scene.motion-paused *, .merry-scene.motion-paused *::before, .merry-scene.motion-paused *::after { animation-play-state:paused!important; }
 .merry-scene.motion-playing .merry-vessel { animation:merry-voyage-visible 5s ease-in-out infinite!important; }
 @media(max-width:700px) { .motion-toggle { top:116px;right:14px;font-size:9px;padding:8px 10px; } }
+
+/* A full-page sea, with the ship below every logo, card and control. */
+body { background:#c8eaf0; }
+.page-sea.merry-scene { position:fixed;inset:0;z-index:0;min-height:0;max-width:none;width:100%;border:0;border-radius:0;box-shadow:none;pointer-events:none;background:linear-gradient(160deg,#b9e4ef 0%,#8fd2e2 35%,#47b4cf 70%,#1685ad 100%); }
+main { position:relative;z-index:2; }
+.site-header { background:#f7f1e5ed; }
+.hero-copy { padding:25px;border-radius:24px;background:#f7f1e5e8;backdrop-filter:blur(6px); }
+.hero { gap:32px 5vw; }
+.hero-proof { background:#f7f1e5e8;padding:22px;border-radius:16px; }
+.hero-visual.brand-visual { min-height:520px;overflow:visible;background:none;border:0;box-shadow:none; }
+.logo-frame { position:relative;z-index:3; }
+.brand-visual::before { z-index:0; }
+.brand-wave { z-index:1; }
+.catalog { background:#f7f1e5df; }
+.process { background:#061829ed; }
+.contact { background:#f7f1e5df; }
+footer { background:#f7f1e5e8; }
+.product-card { background:#f7f1e5ed; }
+.water-light { position:absolute;inset:-30%;background:repeating-conic-gradient(from 20deg at 45% 0%,transparent 0deg 9deg,#ffffff22 10deg 13deg,transparent 14deg 25deg);filter:blur(8px);animation:water-light-drift 18s ease-in-out infinite alternate; }
+.water-ripple { position:absolute;inset:-30%;opacity:.28;background:repeating-radial-gradient(ellipse at 30% 40%,transparent 0 37px,#ecffff 39px 41px,transparent 44px 75px);animation:water-surface 18s linear infinite; }
+.ripple-b { transform:rotate(35deg);opacity:.12;animation-duration:27s;animation-direction:reverse; }
+.page-wave { position:absolute;left:-50%;width:200%;height:170px;opacity:.23;background:radial-gradient(ellipse at 50% 100%,#e3ffff 62%,transparent 64%) 0 0/260px 120px repeat-x;animation:page-water-roll 10s linear infinite; }
+.wave-a { bottom:-60px; }.wave-b { top:47%;opacity:.1;animation-duration:16s;animation-direction:reverse; }
+.roaming-ship { position:absolute;left:0;top:0;width:clamp(180px,24vw,340px);height:clamp(140px,19vw,260px);animation:grand-line-route 32s linear infinite;will-change:transform; }
+.page-sea .merry-vessel { position:absolute;inset:0;width:100%;height:100%;animation:merry-voyage-visible 5s ease-in-out infinite!important; }
+.page-sea .ship-wake { left:0;right:10%;bottom:3%;height:20px;background:#efffffcc; }
+.ocean-control { position:fixed;top:auto;right:auto;left:16px;bottom:18px;z-index:40;background:#062e52ed;color:#fff1d1; }
+@keyframes grand-line-route {
+  0% { transform:translate(2vw,8vh); }
+  18% { transform:translate(65vw,18vh); }
+  36% { transform:translate(68vw,65vh); }
+  54% { transform:translate(28vw,72vh); }
+  72% { transform:translate(3vw,45vh); }
+  88% { transform:translate(38vw,28vh); }
+  100% { transform:translate(2vw,8vh); }
+}
+@keyframes page-water-roll { to { transform:translateX(260px); } }
+@keyframes water-surface { to { background-position:150px 100px; } }
+@keyframes water-light-drift { to { transform:rotate(9deg) translateY(25px); } }
+@media(max-width:700px) { .hero-copy{padding:20px 16px}.hero-visual.brand-visual{min-height:380px}.roaming-ship{width:180px;height:140px}.ocean-control{top:auto;right:auto;left:12px;bottom:16px}.hero{padding-top:32px}.hero-proof{font-size:10px}.catalog,.contact{background:#f7f1e5db} }
+.page-sea.motion-playing .roaming-ship { animation:grand-line-route 32s linear infinite!important; }
+@media(prefers-reduced-motion:reduce) { .roaming-ship,.water-light,.water-ripple,.page-wave{animation:none!important} }
+.catalog,.contact { background:#f7f1e5b8; }
+.process { background:#061829d9; }
+.section-heading > p,.contact-heading > p:not(.kicker) { color:#334955; }
+.hero-copy,.hero-proof,.product-card,.contact-form { position:relative;z-index:2; }
+.contact-form { padding:25px 20px;background:#f7f1e5e8;border-radius:18px; }

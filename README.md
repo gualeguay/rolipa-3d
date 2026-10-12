@@ -11,4 +11,6 @@ Sitio estático preparado para GitHub Pages.
 
 El sitio quedará disponible en:
 
-https://leonelgallop1-boop.github.io/rolipa-3d/
+https://gualeguay.github.io/rolipa-3d/
+
+Las consultas abren WhatsApp con un mensaje preparado; el visitante debe enviarlo allí. El formulario conserva sus datos y ofrece un enlace alternativo si se bloquea la ventana.

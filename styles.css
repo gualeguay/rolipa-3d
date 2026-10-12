@@ -199,3 +199,28 @@ footer > span { color: #7a7871; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }
+
+/* A voyage inspired by the spirit of One Piece, with original nautical shapes. */
+.voyage { position:absolute; inset:auto 4% 2%; height:150px; overflow:hidden; pointer-events:none; z-index:2; }
+.voyage-sun { position:absolute; right:16%; top:8px; width:42px; height:42px; border-radius:50%; background:#f3dfb7; box-shadow:0 0 35px #f3dfb766; }
+.sailing-ship { position:absolute; left:38%; bottom:24px; width:100px; height:110px; animation:sail 6s ease-in-out infinite; }
+.ship-hull { position:absolute; bottom:0; width:100px; height:29px; background:#c8955c; border:3px solid #061829; border-radius:5px 5px 48px 48px; }
+.ship-sail { position:absolute; left:22px; top:0; height:82px; width:62px; border-left:4px solid #061829; border-radius:0 85% 10% 0; background:#f3dfb7; color:#061829; font:bold 12px Arial; padding:35px 0 0 9px; box-shadow:3px 3px 0 #168df0; }
+.sea-wave { position:absolute; bottom:0; left:-50%; width:200%; height:32px; background:radial-gradient(ellipse at 50% 0%,transparent 55%,#168df0 57%,#168df0 68%,transparent 70%) 0 0/80px 32px repeat-x; animation:wave-drift 9s linear infinite; }
+.wave-two { bottom:12px; opacity:.55; animation-duration:13s; animation-direction:reverse; }
+.compass { position:absolute; top:18%; left:0; width:64px; height:64px; border:2px solid #c8955c; border-radius:50%; background:#f7f1e5; display:grid; place-items:center; z-index:4; box-shadow:0 0 0 5px #f7f1e588; }
+.compass span { position:absolute; top:4px; font:bold 9px Arial; }
+.compass i { width:13px; height:36px; background:linear-gradient(#168df0 50%,#c8955c 50%); clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%); animation:compass-course 8s ease-in-out infinite; }
+.direct-contact { margin:25px 0; }
+.direct-contact p { font-size:13px; line-height:1.7; }
+.direct-contact p a { text-decoration:underline; }
+.whatsapp-float { position:fixed; bottom:22px; right:22px; z-index:50; background:#075e54; color:white; padding:15px 20px; border-radius:30px; box-shadow:0 5px 20px #06182933; font-size:14px; font-weight:700; display:flex; gap:14px; }
+.whatsapp-float:hover { background:#084f47; transform:translateY(-2px); }
+a:focus-visible,button:focus-visible { outline:3px solid #168df0; outline-offset:5px; }
+footer { padding-bottom:90px; }
+@keyframes sail { 0%,100% { transform:translate(-15px,0) rotate(-4deg); } 50% { transform:translate(20px,-9px) rotate(4deg); } }
+@keyframes wave-drift { to { transform:translateX(80px); } }
+@keyframes compass-course { 0%,100% { transform:rotate(-22deg); } 50% { transform:rotate(28deg); } }
+@media(max-width:1000px) { nav { display:flex; grid-column:1/-1; grid-row:2; justify-content:center; padding:15px 0; gap:24px; } .header-cta { grid-column:2; grid-row:1; } }
+@media(max-width:700px) { .voyage { height:125px; bottom:0; } .compass { top:15%; width:52px; height:52px; } .whatsapp-float { bottom:14px; right:14px; padding:13px 17px; } nav { font-size:12px; gap:20px; } .hero-actions { flex-wrap:wrap; } }
+@media(prefers-reduced-motion:reduce) { .sailing-ship,.sea-wave,.compass i { animation:none; } }

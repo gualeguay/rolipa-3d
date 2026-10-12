@@ -58,12 +58,32 @@ const merryScene = document.querySelector(".merry-scene");
 if (motionToggle && merryScene) {
   const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
   let running = !preference.matches;
+  const ship = merryScene.querySelector(".roaming-ship");
+  let voyage;
+  const setVoyage = () => {
+    if (!ship || !ship.animate) return;
+    if (voyage) voyage.cancel();
+    const right = Math.max(0, window.innerWidth - ship.offsetWidth - 12);
+    const bottom = Math.max(0, window.innerHeight - ship.offsetHeight - 80);
+    voyage = ship.animate([
+      {transform:`translate3d(12px,${window.innerHeight * .16}px,0)`},
+      {transform:`translate3d(${right}px,${window.innerHeight * .25}px,0)`},
+      {transform:`translate3d(${right}px,${bottom}px,0)`},
+      {transform:`translate3d(${right * .35}px,${bottom * .75}px,0)`},
+      {transform:`translate3d(12px,${window.innerHeight * .4}px,0)`},
+      {transform:`translate3d(12px,${window.innerHeight * .16}px,0)`}
+    ], {duration:22000,iterations:Infinity,easing:"linear"});
+    if (!running) voyage.pause();
+  };
   const updateMotion = () => {
     merryScene.classList.toggle("motion-playing", running);
     merryScene.classList.toggle("motion-paused", !running);
     motionToggle.textContent = running ? "Pausar animación" : "Animar barco";
     motionToggle.setAttribute("aria-pressed", String(running));
+    if (voyage) running ? voyage.play() : voyage.pause();
   };
   motionToggle.addEventListener("click", () => { running = !running; updateMotion(); });
+  setVoyage();
+  window.addEventListener("resize", setVoyage);
   updateMotion();
 }

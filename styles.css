@@ -323,3 +323,33 @@ footer { background:#f7f1e5e8; }
 .section-heading > p,.contact-heading > p:not(.kicker) { color:#334955; }
 .hero-copy,.hero-proof,.product-card,.contact-form { position:relative;z-index:2; }
 .contact-form { padding:25px 20px;background:#f7f1e5e8;border-radius:18px; }
+/* Visible sea and small ship traversing the viewport. */
+.page-sea.merry-scene { margin:0!important;background:linear-gradient(170deg,#87dcea 0%,#35b7d1 35%,#087da5 75%,#07547e 100%)!important; }
+.water-ripple { opacity:.55;background:repeating-radial-gradient(ellipse at 30% 40%,transparent 0 32px,#d1fbff 34px 38px,transparent 40px 70px); }
+.ripple-b { opacity:.25; }
+.page-wave { opacity:.6;height:200px; }
+.wave-b { opacity:.35; }
+main { pointer-events:none; }
+main > * { pointer-events:auto; }
+.hero { background:transparent; }
+.catalog,.contact { background:transparent!important; }
+.section-heading,.contact-heading { padding:25px;border-radius:20px;background:#f7f1e5ed; }
+.filters { width:fit-content;padding:12px;border-radius:16px;background:#f7f1e5ef; }
+.process { background:#061829dc; }
+.product-grid { gap:15px;border:0; }
+.product-card { border:1px solid #061829;border-radius:16px;overflow:hidden; }
+.roaming-ship { width:155px!important;height:115px!important;left:0!important;top:0!important;animation:ship-across-screen 22s linear infinite!important; }
+.page-sea.motion-playing .roaming-ship { animation:ship-across-screen 22s linear infinite!important; }
+.page-sea.motion-paused .roaming-ship { animation-play-state:paused!important; }
+.page-sea .merry-vessel { animation:merry-sailing 4s ease-in-out infinite!important; }
+@keyframes ship-across-screen {
+  0%,100% { transform:translate3d(0,15vh,0); }
+  20% { transform:translate3d(calc(100vw - 160px),24vh,0); }
+  40% { transform:translate3d(calc(100vw - 160px),calc(100vh - 160px),0); }
+  60% { transform:translate3d(35vw,60vh,0); }
+  80% { transform:translate3d(0,40vh,0); }
+}
+@media(max-width:700px) { .roaming-ship{width:110px!important;height:85px!important}.section-heading,.contact-heading{padding:20px}.section{padding-top:65px;padding-bottom:65px}.hero-visual.brand-visual{margin-top:0}.page-sea.merry-scene{margin:0!important} }
+@media(prefers-reduced-motion:reduce) { .page-sea:not(.motion-playing) .roaming-ship { animation:none!important; } }
+
+.page-sea .roaming-ship,.page-sea.motion-playing .roaming-ship { animation:none!important; }

@@ -224,3 +224,36 @@ footer { padding-bottom:90px; }
 @media(max-width:1000px) { nav { display:flex; grid-column:1/-1; grid-row:2; justify-content:center; padding:15px 0; gap:24px; } .header-cta { grid-column:2; grid-row:1; } }
 @media(max-width:700px) { .voyage { height:125px; bottom:0; } .compass { top:15%; width:52px; height:52px; } .whatsapp-float { bottom:14px; right:14px; padding:13px 17px; } nav { font-size:12px; gap:20px; } .hero-actions { flex-wrap:wrap; } }
 @media(prefers-reduced-motion:reduce) { .sailing-ship,.sea-wave,.compass i { animation:none; } }
+
+/* Going Merry: layered animated ocean scene. */
+.merry-scene { min-height:600px; border-radius:160px 160px 32px 32px; overflow:hidden; isolation:isolate; background:#0d638c; box-shadow:0 24px 55px #06182925; border:1px solid #ffffff66; }
+.scene-sky { position:absolute; inset:0; background:linear-gradient(180deg,#062e52 0%,#168dd0 43%,#9adbf1 63%,#078fac 64%,#04395e 100%); z-index:-3; }
+.scene-sun { position:absolute; top:17%; right:14%; width:100px; height:100px; background:#ffe4a8; border-radius:50%; box-shadow:0 0 0 20px #ffe4a81a,0 0 0 45px #ffe4a810,0 0 70px #ffd47888; }
+.cloud { position:absolute; width:180px; height:28px; background:#e5faff55; border-radius:100%; filter:blur(4px); animation:cloud-cruise 24s ease-in-out infinite alternate; }
+.cloud-one { top:35%; left:-30px; }.cloud-two { top:24%; right:-40px; width:140px; animation-duration:31s; }
+.sky-birds { position:absolute; top:33%; right:26%; color:#073a5c; font-size:42px; transform:rotate(-12deg); }
+.scene-label { position:absolute; top:55px; left:0; right:0; text-align:center; color:#fff1d1; z-index:5; }
+.scene-label span { font:700 10px Arial; letter-spacing:.23em; }
+.scene-label strong { display:block; margin-top:12px; font:italic 29px Georgia; }
+.merry-vessel { position:absolute; width:103%; left:-3%; top:16%; height:70%; z-index:2; animation:merry-sailing 7s ease-in-out infinite; transform-origin:50% 75%; }
+.merry-vessel img { width:100%; height:100%; object-fit:contain; position:relative; z-index:2; filter:drop-shadow(0 14px 9px #02314f55); }
+.ship-wake { position:absolute; left:16%; right:12%; bottom:5%; height:22px; border-radius:50%; background:#c8f8ff99; filter:blur(6px); transform:rotate(-3deg); animation:wake-breathe 3s ease-in-out infinite; }
+.ocean { position:absolute; width:200%; left:-50%; background-repeat:repeat-x; pointer-events:none; }
+.ocean-back { top:65%; height:38%; z-index:0; opacity:.65; background:radial-gradient(ellipse at 50% 100%,#0d9ebe 65%,transparent 67%) 0 0/190px 65px repeat-x,linear-gradient(transparent 45px,#087ca5 46px); animation:ocean-roll 10s linear infinite; }
+.ocean-front { bottom:-20px; height:130px; z-index:3; background:radial-gradient(ellipse at 50% 100%,#075b83 64%,transparent 66%) 0 0/220px 75px repeat-x,linear-gradient(transparent 48px,#075b83 49px,#042d50); animation:ocean-roll 8s linear infinite reverse; }
+.ocean-foam { bottom:74px; height:42px; z-index:4; opacity:.6; background:radial-gradient(ellipse at 50% 100%,transparent 58%,#a4f4f5 60%,#a4f4f5 63%,transparent 66%) 0 0/140px 38px repeat-x; animation:foam-roll 6s linear infinite; }
+.voyage-caption { position:absolute; bottom:26px; left:22px; right:22px; display:flex; flex-direction:column; gap:9px; color:#fff1d1; z-index:6; font-size:12px; }
+.voyage-coordinate { font:700 9px Arial; letter-spacing:.2em; color:#8ed9ed; }
+.scene-compass { position:absolute; right:24px; bottom:26px; width:66px; height:66px; border:1px solid #f3dfb799; border-radius:50%; z-index:6; color:#f3dfb7; display:grid; place-items:center; background:#062f4f80; }
+.scene-compass span { position:absolute; top:5px; font-size:9px; }.scene-compass b { position:absolute; bottom:4px; font-size:9px; }
+.scene-compass i { width:12px; height:34px; clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%); background:linear-gradient(#f3dfb7 50%,#168df0 50%); animation:compass-course 10s ease-in-out infinite; }
+.sea-sparkles { position:absolute; inset:65% 0 15%; z-index:4; pointer-events:none; }
+.sea-sparkles i { position:absolute; width:18px; height:3px; background:#d2fcff; border-radius:50%; animation:sea-glimmer 3s ease-in-out infinite; }
+.sea-sparkles i:nth-child(1){left:8%;top:10%}.sea-sparkles i:nth-child(2){left:23%;top:60%;animation-delay:.7s}.sea-sparkles i:nth-child(3){left:48%;top:40%;animation-delay:1.6s}.sea-sparkles i:nth-child(4){left:72%;top:18%;animation-delay:1s}.sea-sparkles i:nth-child(5){left:87%;top:74%;animation-delay:2s}.sea-sparkles i:nth-child(6){left:62%;top:88%;animation-delay:.3s}
+@keyframes merry-sailing { 0%,100%{transform:translate(-7px,3px) rotate(-2deg)}50%{transform:translate(8px,-13px) rotate(2deg)} }
+@keyframes ocean-roll { to{transform:translateX(220px)} } @keyframes foam-roll { to{transform:translateX(140px)} }
+@keyframes cloud-cruise { to{transform:translateX(65px)} } @keyframes sea-glimmer { 0%,100%{opacity:.1;transform:scaleX(.5)}50%{opacity:.9;transform:scaleX(1.3)} }
+@keyframes wake-breathe { 50%{transform:scaleX(1.15);opacity:.5} }
+@media(max-width:1000px){.merry-scene{max-width:700px;width:100%;justify-self:center;min-height:620px}.merry-vessel{width:95%;left:2.5%}}
+@media(max-width:700px){.merry-scene{min-height:490px;border-radius:100px 100px 24px 24px;margin-top:22px}.scene-label{top:40px}.scene-label strong{font-size:25px}.merry-vessel{width:112%;left:-6%;top:20%;height:65%}.scene-sun{width:70px;height:70px;top:24%}.scene-compass{width:50px;height:50px;right:16px}.voyage-caption{left:16px;bottom:25px;font-size:10px}.voyage-coordinate{font-size:8px}.ocean-front{height:115px}.ocean-foam{bottom:64px}}
+@media(prefers-reduced-motion:reduce){.merry-vessel,.ocean,.cloud,.ship-wake,.sea-sparkles i,.scene-compass i{animation:none!important}}

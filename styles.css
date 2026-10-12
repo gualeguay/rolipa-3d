@@ -377,3 +377,11 @@ body.gallery-is-open{overflow:hidden}
 .real-product-photo{position:relative}.photo-count{position:absolute;bottom:12px;right:12px;background:#061829e8;color:#fff;border-radius:20px;padding:7px 11px;font-size:11px;font-weight:700}
 .gallery-thumbnails{display:flex;gap:9px;padding:12px 2px 3px;overflow-x:auto}.gallery-thumbnails button{flex:0 0 64px;width:64px;height:64px;padding:2px;background:#fff;border:2px solid transparent;border-radius:9px;cursor:pointer}.gallery-thumbnails button.selected{border-color:#168df0}.gallery-thumbnails img{width:100%;height:100%;object-fit:contain;border-radius:5px}.gallery-prev:disabled,.gallery-next:disabled{display:none}.gallery-image{height:min(53vh,590px)}
 @media(max-width:700px){.gallery-image{height:48vh}.gallery-thumbnails button{flex-basis:52px;width:52px;height:52px}}
+/* Illustrated ocean texture inspired by the foam and blue water of the logo. */
+.page-sea.merry-scene { background:#063d70!important; }
+.water-ripple,.page-wave,.water-light { display:none!important; }
+.page-sea::before { content:"";position:absolute;inset:-5%;background:url("ocean-blue.webp") center / cover no-repeat;animation:real-ocean-drift 22s ease-in-out infinite alternate;transform-origin:center; }
+.page-sea::after { content:"";position:absolute;inset:0;background:linear-gradient(180deg,#041f461a,#06375a00 50%,#03284722);pointer-events:none; }
+.roaming-ship { z-index:3; }
+@keyframes real-ocean-drift { from { transform:translate3d(-1%,0,0) scale(1.03); } to { transform:translate3d(1%,1%,0) scale(1.07); } }
+@media(prefers-reduced-motion:reduce){.page-sea::before { animation:none!important; }}

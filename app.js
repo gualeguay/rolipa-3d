@@ -14,6 +14,9 @@ filterButtons.forEach((button) => {
     productCards.forEach((card) => {
       card.hidden = filter !== "Todos" && card.dataset.category !== filter;
     });
+    const count = Array.from(productCards).filter(card => !card.hidden).length;
+    const counter = document.querySelector(".catalog-count");
+    if (counter) counter.textContent = `${count} ${count === 1 ? "pieza" : "piezas"} · ${filter === "Todos" ? "Todas las categorías" : filter}`;
   });
 });
 

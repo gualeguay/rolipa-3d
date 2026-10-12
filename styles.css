@@ -385,3 +385,5 @@ body.gallery-is-open{overflow:hidden}
 .roaming-ship { z-index:3; }
 @keyframes real-ocean-drift { from { transform:translate3d(-1%,0,0) scale(1.03); } to { transform:translate3d(1%,1%,0) scale(1.07); } }
 @media(prefers-reduced-motion:reduce){.page-sea::before { animation:none!important; }}
+
+.catalog-count{display:inline-block;margin:0 0 20px;padding:8px 12px;border-radius:10px;background:#f7f1e5ed;font-size:12px;color:#061829}.product-card[hidden]{display:none!important}

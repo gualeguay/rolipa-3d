@@ -181,3 +181,26 @@ if ("IntersectionObserver" in window) {
   }, {rootMargin:"-15% 0px -55% 0px",threshold:0});
   document.querySelectorAll("#catalogo, #proceso, #contacto").forEach((section) => sectionObserver.observe(section));
 }
+
+const chestTrigger = document.querySelector(".chest-trigger");
+const chestTreasures = document.querySelector("#chest-treasures");
+if (chestTrigger && chestTreasures) {
+  chestTrigger.addEventListener("click", () => {
+    const opened = chestTrigger.getAttribute("aria-expanded") !== "true";
+    chestTrigger.setAttribute("aria-expanded", String(opened));
+    chestTreasures.hidden = !opened;
+    chestTrigger.classList.toggle("chest-open", opened);
+    chestTrigger.querySelector(".chest-action").textContent = opened ? "Cerrar el cofre ↑" : "Abrir el cofre ↓";
+  });
+}
+document.querySelectorAll("[data-open-piece]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const slug = button.dataset.openPiece;
+    const index = galleryCards.findIndex(card => JSON.parse(card.dataset.photos).some(src => src.startsWith(`products/${slug}-angle-`)));
+    if (index < 0 || !gallery) return;
+    galleryOpener = button;
+    showPiece(index);
+    gallery.showModal();
+    document.body.classList.add("gallery-is-open");
+  });
+});

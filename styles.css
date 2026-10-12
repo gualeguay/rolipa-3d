@@ -353,3 +353,11 @@ main > * { pointer-events:auto; }
 @media(prefers-reduced-motion:reduce) { .page-sea:not(.motion-playing) .roaming-ship { animation:none!important; } }
 
 .page-sea .roaming-ship,.page-sea.motion-playing .roaming-ship { animation:none!important; }
+
+.real-product-photo { display:block;aspect-ratio:1;background:#e7e7e7;overflow:hidden; }
+.real-product-photo img { width:100%;height:100%;object-fit:contain;display:block;transition:transform .4s; }
+.real-product-photo:hover img { transform:scale(1.04); }
+.instagram-source { display:inline-block;margin-top:14px;font-size:11px;text-decoration:underline; }
+.instagram-showcase { margin-top:35px;padding:28px;border-radius:20px;background:#f7f1e5ed;display:flex;align-items:center;gap:24px;flex-wrap:wrap; }
+.instagram-showcase > div { flex:1;min-width:220px; }.instagram-showcase .kicker{margin-bottom:12px}.instagram-showcase h3{margin:0;font-size:24px}.instagram-showcase p:not(.kicker){font-size:13px;line-height:1.6}.product-grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:1000px){.product-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.product-grid{grid-template-columns:1fr}.instagram-showcase{padding:22px}}

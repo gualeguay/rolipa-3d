@@ -52,3 +52,18 @@ contactForm.addEventListener("submit", (event) => {
   }
   fallback.href = url;
 });
+
+const motionToggle = document.querySelector(".motion-toggle");
+const merryScene = document.querySelector(".merry-scene");
+if (motionToggle && merryScene) {
+  const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let running = !preference.matches;
+  const updateMotion = () => {
+    merryScene.classList.toggle("motion-playing", running);
+    merryScene.classList.toggle("motion-paused", !running);
+    motionToggle.textContent = running ? "Pausar animación" : "Animar barco";
+    motionToggle.setAttribute("aria-pressed", String(running));
+  };
+  motionToggle.addEventListener("click", () => { running = !running; updateMotion(); });
+  updateMotion();
+}

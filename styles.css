@@ -257,3 +257,22 @@ footer { padding-bottom:90px; }
 @media(max-width:1000px){.merry-scene{max-width:700px;width:100%;justify-self:center;min-height:620px}.merry-vessel{width:95%;left:2.5%}}
 @media(max-width:700px){.merry-scene{min-height:490px;border-radius:100px 100px 24px 24px;margin-top:22px}.scene-label{top:40px}.scene-label strong{font-size:25px}.merry-vessel{width:112%;left:-6%;top:20%;height:65%}.scene-sun{width:70px;height:70px;top:24%}.scene-compass{width:50px;height:50px;right:16px}.voyage-caption{left:16px;bottom:25px;font-size:10px}.voyage-coordinate{font-size:8px}.ocean-front{height:115px}.ocean-foam{bottom:64px}}
 @media(prefers-reduced-motion:reduce){.merry-vessel,.ocean,.cloud,.ship-wake,.sea-sparkles i,.scene-compass i{animation:none!important}}
+
+/* Keep the brand prominent and make the ship's sailing motion unmistakable. */
+.scene-brand { position:absolute; top:130px; left:22px; z-index:7; display:flex; flex-direction:column; align-items:center; gap:9px; }
+.scene-brand img { width:110px; height:110px; border-radius:50%; object-fit:cover; border:3px solid #f3dfb7; box-shadow:0 0 0 3px #168df0,0 8px 22px #06182966; }
+.scene-brand span { font:700 8px Arial; letter-spacing:.07em; color:#fff1d1; background:#062e52cc; padding:6px 9px; border-radius:20px; }
+.merry-vessel { animation:merry-voyage-visible 5s ease-in-out infinite !important; will-change:transform; }
+@keyframes merry-voyage-visible {
+  0%,100% { transform:translate3d(-22px,12px,0) rotate(-5deg); }
+  25% { transform:translate3d(0,-12px,0) rotate(-1deg); }
+  50% { transform:translate3d(24px,-22px,0) rotate(5deg); }
+  75% { transform:translate3d(6px,6px,0) rotate(1deg); }
+}
+@media(max-width:700px) { .scene-brand { top:112px;left:16px;gap:7px; }.scene-brand img { width:78px;height:78px; }.scene-brand span { font-size:7px;padding:5px 7px; }.merry-vessel { top:24%;height:61%; } }
+@media(prefers-reduced-motion:reduce) { .merry-vessel { animation:none!important; } }
+
+.motion-toggle { position:absolute;right:22px;top:130px;z-index:8;border:1px solid #f3dfb788;background:#062e52cc;color:#fff1d1;border-radius:20px;padding:9px 12px;font-size:10px;cursor:pointer; }
+.merry-scene.motion-paused *, .merry-scene.motion-paused *::before, .merry-scene.motion-paused *::after { animation-play-state:paused!important; }
+.merry-scene.motion-playing .merry-vessel { animation:merry-voyage-visible 5s ease-in-out infinite!important; }
+@media(max-width:700px) { .motion-toggle { top:116px;right:14px;font-size:9px;padding:8px 10px; } }

@@ -87,3 +87,43 @@ if (motionToggle && merryScene) {
   window.addEventListener("resize", setVoyage);
   updateMotion();
 }
+
+const gallery = document.querySelector(".piece-gallery");
+const galleryCards = Array.from(document.querySelectorAll(".real-product"));
+let galleryIndex = 0;
+let galleryOpener;
+const showPiece = (index) => {
+  galleryIndex = (index + galleryCards.length) % galleryCards.length;
+  const card = galleryCards[galleryIndex];
+  const photo = card.querySelector(".real-product-photo img");
+  gallery.querySelector(".gallery-image").src = photo.src;
+  gallery.querySelector(".gallery-image").alt = photo.alt;
+  gallery.querySelector("#gallery-title").textContent = card.querySelector("h3").textContent;
+  gallery.querySelector(".gallery-counter").textContent = `Pieza ${galleryIndex + 1} de ${galleryCards.length}`;
+  gallery.querySelector(".gallery-instagram").href = card.querySelector(".instagram-source").href;
+};
+if (gallery && galleryCards.length) {
+  galleryCards.forEach((card, index) => {
+    card.querySelectorAll("[data-gallery-open], .piece-gallery-button").forEach((opener) => {
+      opener.addEventListener("click", (event) => {
+        event.preventDefault();
+        galleryOpener = opener;
+        showPiece(index);
+        gallery.showModal();
+      });
+    });
+  });
+  gallery.querySelector(".gallery-close").addEventListener("click", () => gallery.close());
+  gallery.querySelector(".gallery-prev").addEventListener("click", () => showPiece(galleryIndex - 1));
+  gallery.querySelector(".gallery-next").addEventListener("click", () => showPiece(galleryIndex + 1));
+  gallery.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") { event.preventDefault(); showPiece(galleryIndex - 1); }
+    if (event.key === "ArrowRight") { event.preventDefault(); showPiece(galleryIndex + 1); }
+  });
+  gallery.addEventListener("click", (event) => { if (event.target === gallery) gallery.close(); });
+  gallery.addEventListener("close", () => {
+    document.body.classList.remove("gallery-is-open");
+    if (galleryOpener) galleryOpener.focus();
+  });
+  gallery.addEventListener("toggle", () => document.body.classList.toggle("gallery-is-open", gallery.open));
+}
